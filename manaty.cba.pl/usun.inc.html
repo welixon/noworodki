@@ -1,0 +1,20 @@
+<?php
+    $sql  = 'SELECT Mamy.imie FROM Noworodki INNER JOIN Mamy ON Noworodki.identyfikator_matki = Mamy.identyfikator_matki WHERE Mamy.wiek < 25 AND Noworodki.waga > 4000';
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0 ) 
+    {
+        echo "<table border=\"1\">";
+        // output data of each row
+        while($row = mysqli_fetch_assoc($result)) 
+        {
+            echo '<tr><td>' . $row["imie"] . '</td></tr>';
+        }
+        echo "</table>";
+    } 
+    else 
+    {
+        echo "0 results";
+    }
+
+?>	
